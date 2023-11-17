@@ -2,13 +2,14 @@ package com.goldeng.commissionstracker.service;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
+
+import org.springframework.stereotype.Service;
 
 import com.goldeng.commissionstracker.model.Commission;
 import com.goldeng.commissionstracker.repository.ICommissionRepository;
 
+@Service
 public class CommissionService implements ICommissionService{
 
     private  ICommissionRepository commissionRepository;
