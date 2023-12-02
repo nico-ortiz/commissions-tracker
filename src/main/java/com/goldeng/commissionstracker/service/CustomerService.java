@@ -19,6 +19,11 @@ public class CustomerService implements ICustomerService {
 		return customerRepository.save(customer);
 	}
 
+	@Override 
+	public Customer getCustomerById(Long customerId) {
+		return customerRepository.findById(customerId).get();
+	}
+
 	@Override
 	public Customer getCustomerByEmail(String email) {
 		return customerRepository.findByEmail(email).get();
@@ -46,7 +51,7 @@ public class CustomerService implements ICustomerService {
 
 	@Override
 	public Customer deleteCustomerById(Long id) {
-        Customer customerDeleted = customerRepository.findById(id).get();
+		Customer customerDeleted = this.getCustomerById(id);
         customerRepository.deleteById(id);
         return customerDeleted;
 	}

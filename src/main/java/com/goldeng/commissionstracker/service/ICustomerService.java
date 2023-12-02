@@ -8,6 +8,8 @@ public interface ICustomerService {
     
     public Customer createCustomer(Customer customer);
 
+    public Customer getCustomerById(Long customerId);
+
     public Customer getCustomerByEmail(String email);
 
     public List<Customer> getCustomers();
