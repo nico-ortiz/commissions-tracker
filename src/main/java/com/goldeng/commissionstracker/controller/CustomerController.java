@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.goldeng.commissionstracker.dto.CustomerRequest;
 import com.goldeng.commissionstracker.model.Customer;
 import com.goldeng.commissionstracker.service.ICustomerService;
 
@@ -25,8 +25,8 @@ public class CustomerController {
     private ICustomerService customerService;
 
     @PostMapping("/register")
-    public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer) {
-        return new ResponseEntity<Customer>(customerService.createCustomer(customer), HttpStatus.CREATED);
+    public ResponseEntity<Customer> createCustomer(@RequestBody CustomerRequest customerRequest) {
+        return new ResponseEntity<Customer>(customerService.createCustomer(customerRequest), HttpStatus.CREATED);
     }
 
     @GetMapping("/{customerId}")
@@ -34,8 +34,8 @@ public class CustomerController {
         return new ResponseEntity<Customer>(customerService.getCustomerById(customerId), HttpStatus.OK);
     }
 
-    @GetMapping("?email=customerEmail")
-    public ResponseEntity<Customer> getCustomerByEmail(@RequestParam String customerEmail) {
+    @GetMapping("/email/{customerEmail}")
+    public ResponseEntity<Customer> getCustomerByEmail(@PathVariable String customerEmail) {
         return new ResponseEntity<Customer>(customerService.getCustomerByEmail(customerEmail), HttpStatus.OK);
     }
 

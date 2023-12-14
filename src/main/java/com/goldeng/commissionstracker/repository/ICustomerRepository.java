@@ -10,5 +10,5 @@ import com.goldeng.commissionstracker.model.Customer;
 @Repository
 public interface ICustomerRepository extends JpaRepository<Customer, Long> {
     
-    Optional<Customer> findByEmail(String email);
+    Optional<Customer> findCustomerByEmail(String email);
 }
